@@ -37,3 +37,40 @@ const change_text = (text) => ({
     type: CHANGE_TEXT,
     text, // action 안에는 type 외에 추가적인 필드를 마음대로 넣을 수 있다!
 });
+
+const addToList = (item) => ({
+    type: ADD_TO_LIST,
+    item,
+});
+
+// reducer 만들기
+// 위 action creator function 들을 통해 만들어진 객체들을 참조하여,
+// 새로운 상태를 만드는 함수를 만들어 본다.
+// 주의: reducer 에서는 불변성을 꼭 지켜줘야 한다. //
+
+function reducer(state = initState, action) {
+    switch (action.type) {
+        case INCREASE:
+            return {
+                ...state,
+                counter: state.counter + 1,
+            };
+        case DECREASE:
+            return {
+                ...state,
+                counter: state.counter - 1,
+            };
+        case CHANGE_TEXT:
+            return {
+                ...state,
+                text: action.text,
+            };
+        case ADD_TO_LIST:
+            return {
+                ...state,
+                list: state.list.concat(action.item),
+            };
+        default:
+            return state;
+    }
+}
