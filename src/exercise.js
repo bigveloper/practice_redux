@@ -28,6 +28,12 @@ function increase() {
     };
 }
 
+// 화살표 함수로 작성하는것이 코드가 간결해짐, 익숙해져야 함
 const decrease = () => ({
     type: DECREASE,
+});
+
+const change_text = (text) => ({
+    type: CHANGE_TEXT,
+    text, // action 안에는 type 외에 추가적인 필드를 마음대로 넣을 수 있다!
 });
