@@ -74,3 +74,23 @@ function reducer(state = initState, action) {
             return state;
     }
 }
+
+// store 만들기
+const store = createStore(reducer);
+
+console.log(store.getState()); // 현재 store 안에 들어있는 상태를 조회한다.
+
+// store 안에 들어있는 상태가 바뀔 때 마다 호출되는 listener 함수
+const listener = () => {
+    const state = store.getState();
+    console.log(state);
+};
+
+const unsubscribe = store.subscribe(listener);
+// subscribe 를 해지할때는 unsubscribe() 호출!
+
+// action 들을 dispatch 해보자!
+store.dispatch(increase());
+store.dispatch(decrease());
+store.dispatch(change_text('Hello!'));
+store.dispatch(addToList({ id: 1, text: '와우' }));
