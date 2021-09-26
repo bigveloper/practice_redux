@@ -27,3 +27,7 @@ function increase() {
         type: INCREASE, // action object 에는 type 값이 필수!!!
     };
 }
+
+const decrease = () => ({
+    type: DECREASE,
+});
